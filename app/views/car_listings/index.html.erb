@@ -1,0 +1,17 @@
+<h1>All Current Listings</h1>
+
+<ul>
+  <% @car_listings.each do |car_listing| %>
+    <li>
+      <%= link_to car_listing.title, car_listing_path(car_listing) %>
+       - <%= number_to_currency(car_listing.price) %>
+    </li>
+  <% end %>
+</ul>
+
+
+<br>
+<br>
+<div>
+  Have a classic car to sell? Post it <%= link_to "here!", new_car_listing_path %>
+</div>

@@ -1,0 +1,11 @@
+<h1><%= @car_listing.title %></h1>
+
+<p><strong>Make:</strong> <%= @car_listing.make %></p>
+<p><strong>Model:</strong> <%= @car_listing.model %></p>
+<p><strong>Year:</strong> <%= @car_listing.year %></p>
+<p><strong>Mileage:</strong> <%= number_with_delimiter(@car_listing.mileage) %> miles</p>
+<p><strong>Price:</strong> <%= number_to_currency(@car_listing.price) %></p>
+<p><strong>Description:</strong></p>
+<p><%= simple_format(@car_listing.description) %></p>
+
+<%= link_to "Back to Listings", car_listings_path, class: "btn btn-secondary mt-3" %>

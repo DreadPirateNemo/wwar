@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete "logout" => "sessions#destroy"
   resource :registration, only: %i[new create]
   resources :passwords, param: :token
+  resources :car_listings
 
   get "dashboard" => "dashboard#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
