@@ -1,0 +1,2 @@
+module Admin::CarListingsHelper
+end

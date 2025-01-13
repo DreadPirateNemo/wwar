@@ -4,4 +4,6 @@ class User < ApplicationRecord
   has_many :car_listings, dependent: :destroy
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
+
+  attribute :admin, :boolean, default: false
 end

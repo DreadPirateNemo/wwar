@@ -47,6 +47,13 @@
     <%= form.text_area :description, rows: 5, class: "form-control" %>
   </div>
 
+  <br>
+
+  <div class="form-group">
+    <%= form.label :images, "Upload Vehicle Photos" %>
+    <%= form.file_field :images, multiple: true, class: "form-control" %>
+  </div>
+
   <%= form.submit "Post Listing", class: "btn btn-primary" %>
 
 <% end %>

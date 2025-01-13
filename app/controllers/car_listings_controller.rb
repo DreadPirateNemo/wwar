@@ -1,6 +1,8 @@
 class CarListingsController < ApplicationController
-  before_action :require_authentication, except: [:index, :show]
+  allow_unauthenticated_access only: [:index, :show]
+  # before_action :require_authentication, except: [:index, :show]
   before_action :set_car_listing, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_owner!, only: [:edit, :update, :destroy]
 
   def index
     @car_listings = CarListing.all
@@ -44,7 +46,14 @@ class CarListingsController < ApplicationController
   end
 
   def car_listing_params
-    params.require(:car_listing).permit(:title, :description, :price, :year, :make, :model, :mileage)
+    params.require(:car_listing).permit(:title, :description, :price, :year, :make, :model, :mileage, images: [])
+  end
+
+  def authorize_owner!
+    unless Current.user&.admin? || @car_listing.user == Current.user
+      flash[:alert] = 'You are not authorized to edit this listing.'
+      redirect_to @car_listing
+    end
   end
 
 end

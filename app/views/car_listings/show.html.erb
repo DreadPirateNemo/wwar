@@ -8,4 +8,12 @@
 <p><strong>Description:</strong></p>
 <p><%= simple_format(@car_listing.description) %></p>
 
+<% if @car_listing.images.attached? %>
+  <% @car_listing.images.each do |photo| %>
+    <%= image_tag url_for(photo), alt: "vehicle image", class: "img-fluid mt-3" %>
+  <% end %>
+<% end %>
+<br>
+
+
 <%= link_to "Back to Listings", car_listings_path, class: "btn btn-secondary mt-3" %>

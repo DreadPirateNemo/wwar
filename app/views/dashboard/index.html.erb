@@ -1,2 +1,18 @@
 <h1>Dashboard</h1>
 <p><%= link_to "All Listings", car_listings_path %></p>
+
+<div>
+  <% if @car_listings.any?  %>
+    <ul>
+      <% @car_listings.each do |car| %>
+        <li>
+          <%= link_to car.title, car_listing_path(car) %>
+          - <%= number_to_currency(car.price) %>
+          (<%= link_to "Edit", edit_car_listing_path(car) %>)
+        </li>
+      <% end %>
+    </ul>
+    <% else %>
+      <p>You have not listed any vehicles. List one <%= link_to "now!", new_car_listing_path %></p>
+  <% end %>
+</div>
