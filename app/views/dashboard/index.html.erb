@@ -1,8 +1,8 @@
 <h1>Dashboard</h1>
-<p><%= link_to "All Listings", car_listings_path %></p>
-
+<br>
 <div>
   <% if @car_listings.any?  %>
+    <h3>My Current Listings</h3>
     <ul>
       <% @car_listings.each do |car| %>
         <li>
@@ -12,7 +12,10 @@
         </li>
       <% end %>
     </ul>
+    <p><%= link_to "Create New Listing", new_car_listing_path, class: "btn btn-primary" %></p>
     <% else %>
       <p>You have not listed any vehicles. List one <%= link_to "now!", new_car_listing_path %></p>
   <% end %>
 </div>
+<br>
+<p><%= link_to "All Listings", car_listings_path %></p>

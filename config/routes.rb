@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete "logout" => "sessions#destroy"
   resource :registration, only: %i[new create]
   resources :passwords, param: :token
+  get "about_us" => "about_us#index"
   resources :car_listings
   resources :profile, only: %i[show edit update], controller: 'users'
   namespace :admin do

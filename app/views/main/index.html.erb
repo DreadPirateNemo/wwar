@@ -8,4 +8,15 @@
 
 <br><br>
 
-<%= link_to "Dashboard", dashboard_path, class: "link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover link-opacity-75-hover" %>
+
+
+<%# if Current.user.first_name %>
+<!--  <h4>Welcome, <%#= Current.user.first_name %>!</h4>-->
+<!--  <br>-->
+  <%# else %>
+<!--  <h5>Welcome, <%#= Current.user.email_address %>! Please update your profile to include your name and phone number.</h5>-->
+<!--  <br>-->
+<%# end %>
+<br>
+
+<%= link_to "Dashboard", dashboard_path, class: "btn btn-outline-primary" %>
