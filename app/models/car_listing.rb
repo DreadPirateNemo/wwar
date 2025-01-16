@@ -5,6 +5,14 @@ class CarListing < ApplicationRecord
 
   after_save :resize_images
 
+  def self.ransackable_attributes(auth_object = nil)
+    %w[description make mileage model price title year]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[images_attachments images_blobs]
+  end
+
 
   private
   def resize_images

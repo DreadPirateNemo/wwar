@@ -5,7 +5,8 @@ class CarListingsController < ApplicationController
   before_action :authorize_owner!, only: [:edit, :update, :destroy]
 
   def index
-    @car_listings = CarListing.all
+    @q = CarListing.ransack(params[:q])
+    @car_listings = @q.result
   end
 
   def show

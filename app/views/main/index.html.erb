@@ -9,14 +9,20 @@
 <br><br>
 
 
-
-<%# if Current.user.first_name %>
-<!--  <h4>Welcome, <%#= Current.user.first_name %>!</h4>-->
-<!--  <br>-->
-  <%# else %>
-<!--  <h5>Welcome, <%#= Current.user.email_address %>! Please update your profile to include your name and phone number.</h5>-->
-<!--  <br>-->
-<%# end %>
+<% if Current.user %>
+  <% if Current.user.first_name %>
+    <h4>Welcome, <%= Current.user.first_name %>!</h4>
+    <br>
+    <% else %>
+    <h5>Welcome, <%= Current.user.email_address %>! Please update your profile to include your name and phone number.</h5>
+    <br>
+  <% end %>
+  <%= link_to "Dashboard", dashboard_path, class: "btn btn-outline-primary" %>
+  <% else %>
+  <h4>Welcome to Wow What a Ryd! Please log in or create an account to continue.</h4>
+  <br>
+  <%= link_to "Login", new_session_path, class: "btn btn-outline-primary" %>
+  <%= link_to "Create Account", new_registration_path, class: "btn btn-outline-primary" %>
+<% end %>
 <br>
 
-<%= link_to "Dashboard", dashboard_path, class: "btn btn-outline-primary" %>
