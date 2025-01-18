@@ -12,6 +12,6 @@
   },
   "private": true,
   "dependencies": {
-    "tailwindcss": "^3.4.17"
+    "@hotwired/stimulus": "^3.2.2"
   }
 }

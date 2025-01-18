@@ -1,28 +1,26 @@
-<h1>Wow What a Ryd</h1>
-<br>
-<h3>Wow What a Ryd</h3>
-<br>
-<h5>Wow What a Ryd</h5>
-<br>
-<p>Wow What a Ryd</p>
+ <%= image_tag("wwar-logo.svg") %>
+
+
+
 
 <br><br>
 
 
 <% if Current.user %>
   <% if Current.user.first_name %>
-    <h4>Welcome, <%= Current.user.first_name %>!</h4>
+    <h4 class="mx-auto">Welcome, <%= Current.user.first_name %>!</h4>
     <br>
     <% else %>
-    <h5>Welcome, <%= Current.user.email_address %>! Please update your profile to include your name and phone number.</h5>
+    <h4 class="welcome-text">Welcome, <%= Current.user.email_address %>! Please update your profile to include your name and phone number.</h4>
     <br>
   <% end %>
-  <%= link_to "Dashboard", dashboard_path, class: "btn btn-outline-primary" %>
+  <%= link_to "Dashboard", dashboard_path, class: "btn btn-outline-primary text-center" %>
   <% else %>
-  <h4>Welcome to Wow What a Ryd! Please log in or create an account to continue.</h4>
+  <h4 class="welcome-text">Welcome to Wow What a Ryd! Please log in or create an account to continue.</h4>
   <br>
-  <%= link_to "Login", new_session_path, class: "btn btn-outline-primary" %>
-  <%= link_to "Create Account", new_registration_path, class: "btn btn-outline-primary" %>
+  <%= link_to "Login", new_session_path, class: "btn btn-outline-primary text-center" %>
+  <%= link_to "Create Account", new_registration_path, class: "btn btn-outline-primary text-center" %>
 <% end %>
+
 <br>
 

@@ -64,7 +64,3 @@ end
 gem "stringio", "~> 3.1.2"
 
 gem "ransack", "~> 4.2"
-
-gem "tailwindcss-rails", "~> 3.2"
-
-gem "foreman", "~> 0.88.1"

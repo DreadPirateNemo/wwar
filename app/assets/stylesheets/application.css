@@ -22,3 +22,17 @@ input[type="submit"][value="Search"] {
 input[type="submit"][value="Search"]:hover {
     background-color: #628dcc;
 }
+
+img {
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+}
+
+.navbar-brand {
+    padding-left: 48px !important;
+}
+
+footer {
+    margin: auto;
+}
