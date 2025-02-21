@@ -61,6 +61,6 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "stringio", "~> 3.1.2"
+gem "stringio", "~> 3.1.5"
 
 gem "ransack", "~> 4.2"
