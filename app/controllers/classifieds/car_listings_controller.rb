@@ -1,4 +1,4 @@
-class CarListingsController < ApplicationController
+class Classifieds::CarListingsController < ApplicationController
   allow_unauthenticated_access only: [:index, :show]
   # before_action :require_authentication, except: [:index, :show]
   before_action :set_car_listing, only: [:show, :edit, :update, :destroy]
@@ -38,7 +38,7 @@ class CarListingsController < ApplicationController
 
   def destroy
     @car_listing.destroy
-    redirect_to car_listings_path, notice: 'Car Listing deleted.'
+    redirect_to classifieds_car_path, notice: 'Car Listing deleted.'
   end
 
   private

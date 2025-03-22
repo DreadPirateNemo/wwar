@@ -1,4 +1,4 @@
-class CarListing < ApplicationRecord
+class Classifieds::CarListing < ApplicationRecord
   belongs_to :user
   validates :title, :description, :price, :year, :make, :model, :mileage, presence: true
   has_many_attached :images

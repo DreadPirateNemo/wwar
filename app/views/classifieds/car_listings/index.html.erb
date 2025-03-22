@@ -9,7 +9,7 @@
 <ul>
   <% @car_listings.each do |car_listing| %>
     <li>
-      <%= link_to car_listing.title, car_listing_path(car_listing) %>
+      <%= link_to car_listing.title, classifieds_car_path(car_listing) %>
        - <%= number_to_currency(car_listing.price) %>
     </li>
   <% end %>
@@ -19,5 +19,5 @@
 <br>
 <br>
 <div>
-  Have a classic car to sell? Post it <%= link_to "here!", new_car_listing_path %>
+  Have a classic car to sell? Post it <%= link_to "here!", new_classifieds_car_path %>
 </div>
