@@ -5,7 +5,7 @@ class Classifieds::CarListingsController < ApplicationController
   before_action :authorize_owner!, only: [:edit, :update, :destroy]
 
   def index
-    @q = CarListing.ransack(params[:q])
+    @q = Classifieds::CarListing.ransack(params[:q])
     @car_listings = @q.result
   end
 
@@ -43,7 +43,7 @@ class Classifieds::CarListingsController < ApplicationController
 
   private
   def set_car_listing
-    @car_listing = CarListing.find(params[:id])
+    @car_listing = Classifieds::CarListing.find(params[:id])
   end
 
   def car_listing_params

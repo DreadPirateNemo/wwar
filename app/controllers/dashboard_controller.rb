@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
   def index
-    @car_listings = Current.user.car_listings
+    @car_listings = Classifieds::CarListing.where(user_id: Current.user.id)
   end
 
   def show
