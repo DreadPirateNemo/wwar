@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   get "about_us" => "about_us#index"
 
   namespace :classifieds do
-    resources :car_listings, as: :cars
-    resources :car_parts, as: :parts
+    resources :car_listings, path: 'cars'
+    resources :car_parts, path: 'parts'
   end
 
   resources :profile, only: %i[show edit update], controller: 'users'

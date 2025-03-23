@@ -1,6 +1,6 @@
 <h1>List a Car</h1>
 
-<%= form_with model: @car_listing, local: true do |form| %>
+<%= form_with model: @car_listing, url: classifieds_car_listings_path, local: true do |form| %>
   <% if @car_listing.errors.any? %>
     <div class="alert alert-danger">
       <h2><%= pluralize(@car_listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
@@ -58,4 +58,4 @@
 
 <% end %>
 
-<%= link_to "Back to Listings", car_listings_path, class: "btn btn-secondary" %>
+<%= link_to "Back to Listings", classifieds_car_listings_path, class: "btn btn-secondary" %>

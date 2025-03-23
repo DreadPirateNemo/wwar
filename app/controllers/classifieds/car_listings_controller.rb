@@ -17,10 +17,12 @@ class Classifieds::CarListingsController < ApplicationController
   end
 
   def create
+    Rails.logger.debug(params.inspect) # Logs all incoming parameters to the console
     @car_listing = Current.user.car_listings.build(car_listing_params)
     if @car_listing.save
-      redirect_to @car_listing, notice: 'Car Listing was successfully created.'
+      redirect_to classifieds_car_listing_path(@car_listing), notice: 'Car Listing was successfully created.'
     else
+      Rails.logger.debug(@car_listing.errors.full_messages) # Logs validation errors
       render :new
     end
   end
@@ -38,7 +40,7 @@ class Classifieds::CarListingsController < ApplicationController
 
   def destroy
     @car_listing.destroy
-    redirect_to classifieds_car_path, notice: 'Car Listing deleted.'
+    redirect_to classifieds_car_listing_path, notice: 'Car Listing deleted.'
   end
 
   private
@@ -47,11 +49,11 @@ class Classifieds::CarListingsController < ApplicationController
   end
 
   def car_listing_params
-    params.require(:car_listing).permit(:title, :description, :price, :year, :make, :model, :mileage, images: [])
+    params.require(:classifieds_car_listing).permit(:title, :description, :price, :year, :make, :model, :mileage, images: [])
   end
 
   def authorize_owner!
-    unless Current.user&.admin? || @car_listing.user == Current.user
+    unless @car_listing.user == Current.user
       flash[:alert] = 'You are not authorized to edit this listing.'
       redirect_to @car_listing
     end

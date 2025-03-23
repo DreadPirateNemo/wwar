@@ -53,7 +53,7 @@ module Classifieds
       @classifieds_car_part.destroy!
 
       respond_to do |format|
-        format.html { redirect_to classifieds_parts_path, status: :see_other, notice: "Car part was successfully destroyed." }
+        format.html { redirect_to classifieds_car_parts_path, status: :see_other, notice: "Car part was successfully destroyed." }
         format.json { head :no_content }
       end
     end
@@ -70,7 +70,7 @@ module Classifieds
       end
 
     def authorize_owner!
-      unless Current.user&.admin? || @classifieds_car_part.user == Current.user
+      unless @classifieds_car_part.user == Current.user
         flash[:alert] = 'You are not authorized to edit this listing.'
         redirect_to @classifieds_car_part
       end
