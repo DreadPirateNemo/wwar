@@ -1,16 +1,25 @@
-<p style="color: green"><%= notice %></p>
+<h1>All Current Listings</h1>
 
-<% content_for :title, "Car parts" %>
+<%= search_form_for @q, url: classifieds_car_parts_path, method: :get do |f| %>
+  <%= f.search_field :title_or_make_or_model_or_year_or_price_or_description_cont, placeholder: "Search parts..." %>
 
-<h1>Car parts</h1>
+  <%= f.submit "Search", class: "btn btn-primary" %>
+<% end %>
 
-<div id="classifieds_car_parts">
-  <% @classifieds_car_parts.each do |classifieds_car_part| %>
-    <%= render classifieds_car_part %>
-    <p>
-      <%= link_to "Show this car part", classifieds_car_part %>
-    </p>
+<ul>
+  <% @part_listings.each do |part_listing| %>
+    <li>
+      <%= link_to part_listing.title, classifieds_car_part_path(part_listing) %>
+      - <%= number_to_currency(part_listing.price) %>
+    </li>
   <% end %>
+</ul>
+
+<br>
+<br>
+
+<div>
+  Have a car part to sell? Post it <%= link_to "here!", new_classifieds_car_part_path, class: "btn btn-primary" %>
 </div>
 
-<%= link_to "New car part", new_classifieds_part_path %>
+<!-- TODO: FIX THIS PAGE -->

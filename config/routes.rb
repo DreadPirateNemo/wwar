@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "about_us" => "about_us#index"
 
   namespace :classifieds do
+    resource :hub
     resources :car_listings, path: 'cars'
     resources :car_parts, path: 'parts'
   end

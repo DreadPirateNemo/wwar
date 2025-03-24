@@ -1,0 +1,17 @@
+<h1><%= @classifieds_car_part.title %></h1>
+
+<p><strong>Make:</strong> <%= @classifieds_car_part.make %></p>
+<p><strong>Model:</strong> <%= @classifieds_car_part.model %></p>
+<p><strong>Year:</strong> <%= @classifieds_car_part.year %></p>
+<p><strong>Price:</strong> <%= number_to_currency(@classifieds_car_part.price) %></p>
+<p><strong>Description:</strong></p>
+<p><%= simple_format(@classifieds_car_part.description) %></p>
+
+<% if @classifieds_car_part.images.attached? %>
+  <% @classifieds_car_part.images.each do |photo| %>
+    <%= image_tag url_for(photo), alt: "part image", class: "img-fluid mt-3" %>
+  <% end %>
+<% end %>
+<br>
+
+<%= link_to "Back to Listings", classifieds_car_parts_path, class: "btn btn-secondary mt-3" %>

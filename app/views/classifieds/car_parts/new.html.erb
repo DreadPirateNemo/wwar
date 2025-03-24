@@ -1,11 +1,11 @@
 <h1>List a Car Part</h1>
 
-<%= form_with model: @car_part, url: classifieds_car_parts_path, local: true do |form| %>
-  <% if @car_part.errors.any? %>
+<%= form_with model: @classifieds_car_part, url: classifieds_car_parts_path, local: true do |form| %>
+  <% if @classifieds_car_part.errors.any? %>
     <div class="alert alert-danger">
-      <h2><%= pluralize(@car_part.errors.count, "error") %> prohibited this part from being saved:</h2>
+      <h2><%= pluralize(@classifieds_car_part.errors.count, "error") %> prohibited this part from being saved:</h2>
       <ul>
-        <% @car_part.errors.full_messages.each do |message| %>
+        <% @classifieds_car_part.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
