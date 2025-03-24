@@ -8,7 +8,7 @@ module Classifieds
     # GET /classifieds/car_parts or /classifieds/car_parts.json
     def index
       @q = Classifieds::CarPart.ransack(params[:q])
-      @classifieds_car_parts = @q.result
+      @part_listing = @q.result || Classifieds::CarPart.all
     end
 
     # GET /classifieds/car_parts/1 or /classifieds/car_parts/1.json

@@ -1,22 +1,51 @@
 <h1>Dashboard</h1>
 <br>
-<div>
-  <% if @car_listings.any? || if @part_listings.any?  %>
-    <h3>My Current Listings</h3>
-    <ul>
-      <% @car_listings.each do |car| %>
-        <li>
-          <%= link_to car.title, classifieds_car_listing_path(car) %>
-          - <%= number_to_currency(car.price) %>
-          (<%= link_to "Edit", edit_classifieds_car_listing_path(car) %>)
-        </li>
+
+<div class="container">
+  <div class="row">
+    <!-- Car Listings -->
+    <div class="col-md-6">
+      <% if @car_listings.any? %>
+        <h3>My Current Car Listings</h3>
+        <ul>
+          <% @car_listings.each do |car| %>
+            <li>
+              <%= link_to car.title, classifieds_car_listing_path(car) %>
+              - <%= number_to_currency(car.price) %>
+              (<%= link_to "Edit", edit_classifieds_car_listing_path(car) %>)
+            </li>
+          <% end %>
+        </ul>
+        <p><%= link_to "Create New Listing", new_classifieds_car_listing_path, class: "btn btn-primary" %></p>
+      <% else %>
+        <p class="text-muted">You have not listed any vehicles. List one <%= link_to "here!", new_classifieds_car_listing_path %></p>
       <% end %>
-    </ul>
-    <p><%= link_to "Create New Listing", new_classifieds_car_listing_path, class: "btn btn-primary" %></p>
-    <% else %>
-      <p>You have not listed any vehicles. List one <%= link_to "now!", new_classifieds_car_listing_path %></p>
-    <% end %>
+
+      <!-- Add All Car Listings link here -->
+      <p><%= link_to "All Car Listings", classifieds_car_listings_path %></p>
+    </div>
+
+    <!-- Part Listings -->
+    <div class="col-md-6">
+      <% if @part_listings.any? %>
+        <h3>My Current Parts Listings</h3>
+        <ul>
+          <% @part_listings.each do |part| %>
+            <li>
+              <%= link_to part.title, classifieds_car_part_path(part) %>
+              - <%= number_to_currency(part.price) %>
+              (<%= link_to "Edit", edit_classifieds_car_part_path(part) %>)
+            </li>
+          <% end %>
+        </ul>
+        <p><%= link_to "Create New Listing", new_classifieds_car_part_path, class: "btn btn-primary" %></p>
+      <% else %>
+        <p class="text-muted">You have not listed any parts. List one <%= link_to "here!", new_classifieds_car_part_path %></p>
+      <% end %>
+
+      <p><%= link_to "All Parts Listings", classifieds_car_parts_path %></p>
+    </div>
   </div>
-  <br>
-  <p><%= link_to "All Listings", classifieds_car_listings_path %></p>
-  <% end %>
+</div>
+
+<br>

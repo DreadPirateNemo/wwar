@@ -1,13 +1,13 @@
 <h1>All Current Listings</h1>
 
 <%= search_form_for @q, url: classifieds_car_parts_path, method: :get do |f| %>
-  <%= f.search_field :title_or_make_or_model_or_year_or_price_or_description_cont, placeholder: "Search parts..." %>
+  <%= f.search_field :title_or_make_or_model_or_year_or_price_or_description_cont %>
 
-  <%= f.submit "Search", class: "btn btn-primary" %>
+  <%= f.submit %>
 <% end %>
 
 <ul>
-  <% @part_listings.each do |part_listing| %>
+  <% @part_listing.each do |part_listing| %>
     <li>
       <%= link_to part_listing.title, classifieds_car_part_path(part_listing) %>
       - <%= number_to_currency(part_listing.price) %>
@@ -19,7 +19,5 @@
 <br>
 
 <div>
-  Have a car part to sell? Post it <%= link_to "here!", new_classifieds_car_part_path, class: "btn btn-primary" %>
+  Have parts to sell? Post them <%= link_to "here!", new_classifieds_car_part_path, class: "btn btn-primary" %>
 </div>
-
-<!-- TODO: FIX THIS PAGE -->

@@ -7,7 +7,7 @@ module Classifieds
 
     def index
       @q = Classifieds::CarListing.ransack(params[:q])
-      @car_listings = @q.result
+      @car_listings = @q.result || Classifieds::CarListing.all
     end
 
     def show

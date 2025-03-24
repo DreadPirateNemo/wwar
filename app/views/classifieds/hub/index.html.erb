@@ -1,0 +1,23 @@
+<h1>All Current Listings</h1>
+
+<%= search_form_for(@classifieds, method: :get) do |f| %>
+  <!-- Use fields common to both models. For example, if both have a 'title' field: -->
+  <div>
+    <%= f.search_field :title_or_make_or_model_or_year_or_price_or_description_cont %>
+
+    <%= f.submit %>
+  </div>
+
+<% end %>
+
+<h2>Combined Listings</h2>
+<% @classifieds.each do |listing| %>
+  <div class="listing">
+    <!-- Display attributes common to both, or use conditionals if they differ -->
+    <h3><%= listing.title %></h3>
+    <p><%= listing.description %></p>
+    <p><em>Listed on: <%= listing.created_at.strftime('%Y-%m-%d') %></em></p>
+    <!-- Optionally display the type of listing -->
+    <p>Type: <%= listing.class.name.demodulize %></p>
+  </div>
+<% end %>
