@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resource :registration, only: %i[new create]
   resources :passwords, param: :token
   get "about_us" => "about_us#index"
+  get "videos" => "videos#index"
 
   namespace :classifieds do
     resources :hub
