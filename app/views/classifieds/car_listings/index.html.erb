@@ -1,23 +1,24 @@
-<h1>All Current Listings</h1>
+<h1>All Current Car Listings</h1>
+
+<%= link_to "New Car Listing", new_classifieds_car_listing_path,
+              data: { turbo_frame: "modal" },
+              class: "btn btn-primary" %>
 
 <%= search_form_for @q, url: classifieds_car_listings_path, method: :get do |f| %>
   <%= f.search_field :title_or_make_or_model_or_year_or_mileage_or_price_or_description_cont %>
-
   <%= f.submit %>
 <% end %>
 
-<ul>
-  <% @car_listings.each do |car_listing| %>
-    <li>
-      <%= link_to car_listing.title, classifieds_car_listing_path(car_listing) %>
-       - <%= number_to_currency(car_listing.price) %>
-    </li>
-  <% end %>
+<ul id="car-listings">
+  <%= render @car_listings %> <!-- uses _car_listing.html.erb -->
 </ul>
 
-
-<br>
-<br>
+<br><br>
 <div>
-  Have a classic car to sell? Post it <%= link_to "here!", new_classifieds_car_listing_path %>
+  Have a classic car to sell?
+  <%= link_to "Post it here!", new_classifieds_car_listing_path,
+              data: { turbo_frame: "modal" },
+              class: "btn btn-primary" %>
 </div>
+
+<turbo-frame id="modal"></turbo-frame>
