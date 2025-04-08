@@ -15,16 +15,25 @@ module Classifieds
 
     def new
       @car_listing = Current.user.car_listings.build
+      render layout: false if turbo_frame_request?
     end
+
 
     def create
       Rails.logger.debug(params.inspect) # Logs all incoming parameters to the console
       @car_listing = Current.user.car_listings.build(car_listing_params)
       if @car_listing.save
-        redirect_to classifieds_car_listing_path(@car_listing), notice: 'Car Listing was successfully created.'
+        # redirect_to classifieds_car_listing_path(@car_listing), notice: 'Car Listing was successfully created.'
+        flash.now[:notice] = 'Car Listing was successfully created.'
+        respond_to do |format|
+          format.turbo_stream
+          format.html { redirect_to @car_listing, notice: 'Car Listing created!' }
+        end
       else
-        Rails.logger.debug(@car_listing.errors.full_messages) # Logs validation errors
-        render :new
+        Rails.logger.debug(@car_listing.errors.full_messages)
+        # Logs validation errors
+        # render :new
+        render partial: 'shared/modal', status: :unprocessable_entity
       end
     end
 

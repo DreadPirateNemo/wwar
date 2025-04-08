@@ -1,0 +1,4 @@
+<%= turbo_stream.prepend "car-listings", partial: "classifieds/car_listings/car_listing", locals: { car_listing: @car_listing } %>
+<%= turbo_stream.update "modal", "" %>
+<%= turbo_stream.update "flash", partial: "shared/flash" %>
+

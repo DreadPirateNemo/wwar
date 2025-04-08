@@ -1,0 +1,18 @@
+<div id="<%= dom_id(car_listing) %>" class="card h-100 shadow-sm mb-3 turbo-fade-in">
+  <div class="card-body">
+    <h5 class="card-title mb-1">
+      <%= link_to car_listing.title, classifieds_car_listing_path(car_listing), class: "text-decoration-none" %>
+    </h5>
+    <p class="card-text mb-2">
+      <strong><%= car_listing.make %> <%= car_listing.model %></strong> –
+      <%= car_listing.year %> –
+      <%= number_with_delimiter(car_listing.mileage) %> miles
+    </p>
+    <p class="card-text">
+      <span class="badge bg-success fs-6">
+        <%= number_to_currency(car_listing.price) %>
+      </span>
+    </p>
+    <%= link_to "View Details", classifieds_car_listing_path(car_listing), class: "btn btn-outline-primary btn-sm mt-2" %>
+  </div>
+</div>
