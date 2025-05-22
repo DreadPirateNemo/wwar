@@ -1,0 +1,2 @@
+module Classifieds::CarPartsHelper
+end

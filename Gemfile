@@ -64,3 +64,9 @@ end
 gem "stringio", "~> 3.1.2"
 
 gem "ransack", "~> 4.2"
+
+gem "dotenv", "~> 3.1"
+
+gem "dotenv-rails", "~> 3.1"
+
+gem "google-api-client", "~> 0.53.0"

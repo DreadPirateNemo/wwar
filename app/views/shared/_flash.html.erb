@@ -1,11 +1,37 @@
-<% if flash[:notice] %>
-  <div class="alert alert-info mt-4" role="alert">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
+<div class="toast-container position-fixed top-0 end-0 p-3"
+     style="z-index: 1080; font-family: inherit;"
+     data-controller="toast">
+  <% flash.each do |type, message| %>
+    <% bootstrap_class = {
+      notice: "bg-success text-white",
+      alert: "bg-warning text-dark",
+      error: "bg-danger text-white"
+    }[type.to_sym] || "bg-info text-white" %>
 
-<% if flash[:alert] %>
-  <div class="alert alert-warning mt-4" role="alert">
-    <%= flash[:alert] %>
-  </div>
-<% end %>
+    <div class="toast align-items-center <%= bootstrap_class %> border-0 fade"
+         role="alert"
+         aria-live="assertive"
+         aria-atomic="true"
+         data-bs-delay="4000"
+         data-bs-autohide="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          <%= message %>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto"
+                data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<!--<script>-->
+<!--    document.querySelectorAll(".toast").forEach(el => {-->
+<!--        try {-->
+<!--            const toast = new bootstrap.Toast(el)-->
+<!--            toast.show()-->
+<!--        } catch (e) {-->
+<!--            console.error("Toast init failed:", e)-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->

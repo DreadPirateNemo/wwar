@@ -1,0 +1,33 @@
+<h1>Wow What a Ryd YouTube Videos</h1>
+
+<% if @error.present? %>
+  <div class="alert alert-danger"><%= @error %></div>
+<% else %>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-2">
+  <% @videos.each do |video| %>
+      <div class="col">
+        <div class="card h-100 shadow-sm mb-3">
+          <a href="#" data-action="click->youtube#open" data-youtube-video-id="<%= video.id.video_id %>">
+          <%= image_tag video.snippet.thumbnails.default.url, class: "card-img-top", alt: video.snippet.title %>
+          </a>
+          <div class="card-body">
+            <h5 class="card-title"><%= video.snippet.title %></h5>
+            <p class="card-text">
+              <%= truncate(video.snippet.description, length: 100) %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="d-flex justify-content-between mt-4">
+    <% if @prev_page_token.present? %>
+      <%= link_to 'Previous', videos_path(page_token: @prev_page_token), class: "btn btn-primary" %>
+    <% else %>
+      <span></span>
+    <% end %>
+    <% if @next_page_token.present? %>
+      <%= link_to 'Next', videos_path(page_token: @next_page_token), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+<% end %>

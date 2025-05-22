@@ -8,11 +8,15 @@ Rails.application.routes.draw do
   resource :registration, only: %i[new create]
   resources :passwords, param: :token
   get "about_us" => "about_us#index"
-  resources :car_listings
-  resources :profile, only: %i[show edit update], controller: 'users'
-  namespace :admin do
-    resources :car_listings
+  get "videos" => "videos#index"
+
+  namespace :classifieds do
+    resources :hub
+    resources :car_listings, path: 'cars'
+    resources :car_parts, path: 'parts'
   end
+
+  resources :profile, only: %i[show edit update], controller: 'users'
 
 
   get "dashboard" => "dashboard#index"
